@@ -1,13 +1,13 @@
 function activateModal(modalObject, originalClassName) {
-  modalObject.className = originalClassName, modalActive;
+  modalObject.className = originalClassName + modalActive;
 }
 
 function closeModal(modalObject, originalClassName) {
-  modalObject.className = originalClassName, modalClosed;
+  modalObject.className = originalClassName + modalClosed;
 }
 
-const modalActive = "modal_active";
-const modalClosed = "modal__close";
+const modalActive = " modal_active";
+const modalClosed = " modal__close";
 const modalMain = document.querySelector("#modal_main");
 const modalSuccess = document.querySelector("#modal_success");
 
