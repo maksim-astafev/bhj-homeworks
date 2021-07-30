@@ -1,7 +1,7 @@
 const timerIdName = "timer";
 const timerLabel = document.getElementById(timerIdName);
 let timerCounter = Number(timerLabel.textContent);
-let intervalID = "timerContest";
+let intervalID = null;
 const timerStep = 1000;
 
 const decrementTimer = function() {
