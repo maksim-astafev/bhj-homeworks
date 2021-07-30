@@ -12,7 +12,9 @@ const fontSizeButtons = Array.from(document.querySelectorAll(`.${fontSizeClass}`
 const bookElement = document.querySelector(`.${bookNormalClass}`);
 
 function switchSizeButton(clickedButton) {
-  currentSizeButton.classList.remove(fontSizeActiveClass);
+  if(currentSizeButton !== null) {
+    currentSizeButton.classList.remove(fontSizeActiveClass);
+  }
   currentSizeButton = clickedButton;
   currentSizeButton.classList.add(fontSizeActiveClass);
 }
@@ -31,13 +33,16 @@ function switchSizeInBook(currentSizeButton) {
   }
 }
 
+function switchSizes(clickedButton) {
+  switchSizeButton(clickedButton);
+  switchSizeInBook(currentSizeButton);
+}
+
 function setDefaultButton(defaultFontSizeData) {
   if(currentSizeButton === null) {
     fontSizeButtons.forEach((toActivate) => {
       if(toActivate.dataset.size === defaultFontSizeData) {
-        toActivate.classList.add(fontSizeActiveClass);
-        currentSizeButton = toActivate;
-        switchSizeInBook(currentSizeButton);
+        switchSizes(toActivate);
       }
     });
   }
@@ -56,8 +61,7 @@ fontSizeButtons.forEach((sizeButton) => {
 
   sizeButton.onclick = (event) => {
     if(event.target !== currentSizeButton) {
-      switchSizeButton(event.target);
-      switchSizeInBook(currentSizeButton);
+      switchSizes(event.target);
     }
 
     return false;
