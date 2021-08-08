@@ -20,7 +20,7 @@ function toggleCheckChildren(event, element, selector) {
   });
 }
 
-interests.forEach( (interest, i) => {
+interests.forEach( (interest) => {
   if(isHaveChild(interest, interestClass)) {
     const nearestCheck = interest.querySelector(`.${interestCheckClass}`)
     nearestCheck.addEventListener("change", (event) => toggleCheckChildren(event, interest, interestCheckClass));
