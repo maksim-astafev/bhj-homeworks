@@ -1,8 +1,6 @@
-const formId = "form";
+const fileFormId = "form";
 const progressBarId = "progress";
-const fileInputId = "file";
-const sendButtonId = "send";
-const sendButton = document.querySelector(`#${sendButtonId}`);
+const fileFormBlock = document.querySelector(`#${fileFormId}`);
 
 function resetProgressBar() {
   const progressBarElement = document.querySelector(`#${progressBarId}`);
@@ -15,18 +13,14 @@ function progressHandler(event, progressElement) {
 }
 
 function sendHandler(event) {
-  const fileInputElement = document.querySelector(`#${fileInputId}`);
-  const selectedFile = fileInputElement.files[0];
-
-  if(selectedFile !== undefined) {
-    const progressBarElement = resetProgressBar();
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://netology-slow-rest.herokuapp.com/upload.php");
-    xhr.upload.onprogress = (event) => progressHandler(event, progressBarElement);
-    xhr.send(selectedFile);
-  }
+  const progressBarElement = resetProgressBar();
+  const fileForm = new FormData(fileFormBlock);
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://netology-slow-rest.herokuapp.com/upload.php");
+  xhr.upload.onprogress = (event) => progressHandler(event, progressBarElement);
+  xhr.send(fileForm);
 
   event.preventDefault();
 }
 
-sendButton.onclick = (event) => sendHandler(event);
+fileFormBlock.addEventListener("submit", (event) => sendHandler(event));
