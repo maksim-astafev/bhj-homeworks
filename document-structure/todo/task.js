@@ -43,7 +43,7 @@ function clearInput(input) {
 }
 
 function checkInput(inputValue) {
-  if(inputValue !== "") {
+  if(inputValue.trim() !== "") {
     newTaskHandler(inputElement.value);
     clearInput(inputElement);
   }
