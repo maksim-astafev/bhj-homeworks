@@ -37,7 +37,7 @@ function deactivateLoaderAnimation(){
 }
 
 function serverListener() {
-  if(this.readyState === this.DONE  && this.status == 200) {
+  if(this.status == 200) {
     const currencyList = this.response.response.Valute;
     for(i in currencyList) {
       addCurrencyToList(currencyList[i]);
@@ -48,6 +48,6 @@ function serverListener() {
 
 xhr.open("GET", "https://netology-slow-rest.herokuapp.com");
 xhr.responseType = "json";
-xhr.addEventListener("readystatechange", serverListener);
+xhr.addEventListener("load", serverListener);
 xhr.send();
 activateLoaderAnimation();

@@ -22,7 +22,7 @@ function createAnswerElement(pollAnswersBlock, answer) {
 }
 
 function serverListener() {
-  if(this.readyState === this.DONE  && this.status == 200) {
+  if(this.status == 200) {
     const poll = this.response.data; 
 
     const pollBlock = document.querySelector(`.${pollClass}`);
@@ -38,5 +38,5 @@ function serverListener() {
 
 xhr.open("GET", "https://netology-slow-rest.herokuapp.com/poll.php");
 xhr.responseType = "json";
-xhr.addEventListener("readystatechange", serverListener);
+xhr.addEventListener("load", serverListener);
 xhr.send();
