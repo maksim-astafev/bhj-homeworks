@@ -8,8 +8,8 @@ function resetProgressBar() {
   return progressBarElement;
 }
 
-function progressHandler(event, progressElement) {
-  progressElement.value = event.loaded / event.total;
+function progressHandler(event, progressBarElement) {
+  progressBarElement.value = event.loaded / event.total;
 }
 
 function sendHandler(event) {
