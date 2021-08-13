@@ -45,3 +45,18 @@
   display: block;
   text-align: center;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logout__btn {
+  display: none;
+  margin-top: 50px;
+}
+
+.logout_active {
+  display: block;
+}
