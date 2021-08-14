@@ -1,13 +1,11 @@
 const editorId = "editor";
 const clearEditorClass = "clear_editor";
+const editorTextKey = "editorText";
 const editorElement = document.querySelector(`#${editorId}`);
 const clearEditorElement = document.querySelector(`.${clearEditorClass}`);
 
 function domLoadedHandler() {
-  const lastEditorText = localStorage.editorText;
-  if(lastEditorText !== undefined) {
-    editorElement.value = lastEditorText;
-  }
+  editorElement.value = localStorage.getItem(editorTextKey);
 }
 
 function changeEditorHandler() {
@@ -16,7 +14,7 @@ function changeEditorHandler() {
 
 function clearEditorHandler(event) {
   editorElement.value = "";
-  localStorage.editorText = "";
+  localStorage.removeItem(editorTextKey);
   event.preventDefault();
 }
 
